@@ -1,5 +1,5 @@
-from model import model_lead
-import control
+from Aula_modularizacao.model import model_lead
+import Aula_modularizacao.control as control
  
 def add_lead():
     name = input("Nome: ")
