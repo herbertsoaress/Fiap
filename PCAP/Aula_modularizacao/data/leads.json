@@ -1,8 +1,8 @@
 [
-    {
-        "name": "Ale",
-        "email": "a@gmail.com",
-        "status": "novo",
-        "created": "2026-09-10"
-    }
+  {
+    "name": "Ale",
+    "email": "a@gmail.com",
+    "status": "velho",
+    "created": "2026-09-10"
+  }
 ]
