@@ -1,5 +1,5 @@
-from Aula_modularizacao.model import model_lead
-import Aula_modularizacao.control as control
+from model import model_lead
+import control
  
 def add_lead():
     name = input("Nome: ")
@@ -33,6 +33,26 @@ def delete_lead():
     else:
         print("Lead nao encontrado.")
 
+def search_leads():
+    query = input("Buscar por:").strip()
+    if not query:
+        print("Consulta vazia")
+        return
+    #com a query digitada (busca)... preciso enviar para o control
+    # o conrol ira comparar a query com os dados do leads.json
+    # e ira retornar os resultados da busca
+    founds_leads = control.read_leads_serach(query)
+
+    for i, lead in founds_leads:
+        print(f"{i:02d} | {lead["name"]:<10} | {lead["email"]}")
+
+
+def export_leads():
+    path_csv = control.export_csv()
+
+    if path_csv is None:
+        print(f"Exportando para {path_csv}")
+
 def main():
     while True:
         print("\nmini crm de leads")
@@ -40,6 +60,8 @@ def main():
         print("[2] Listar lead")
         print("[3] Atualizar lead")
         print("[4] Remover lead")
+        print("[5] Search Lead")
+        print("[6] Export Lead")
         print("[0] Sair do programa")
 
         opt = input("Escolha uma opcao:")
@@ -52,6 +74,10 @@ def main():
             update_lead()
         elif opt == "4":
             delete_lead()
+        elif opt == "5":
+            search_leads()
+        elif opt == "6":
+            export_leads()
         elif opt =="0":
             print("Ate mais...")
             break
